@@ -1,17 +1,9 @@
 .outline-btn {
   font-size: 14px !important;
-  font-weight: lighter !important;
   text-transform: uppercase;
   background: linear-gradient(134.72deg, $color-blue-dark 0%, $color-blue-light 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.border-important{
-  border-style: solid !important;
-  border-width: 5px !important;
-  border-radius: 40px !important;
-  border-color: linear-gradient(134.72deg, $color-blue-dark 0%, $color-blue-light 100%) !important;
 }
 
 .btn-bg-send {
