@@ -36,12 +36,13 @@
 
 
 .plane-animation{
-
+  .container{
     height: 600px;
     width: 100%;
     @include h-gradient($color-blue-dark, $color-blue-light);
     overflow: hidden;
     position: relative;
+  }
 
   .cloud1, .cloud2, .cloud3, .cloud4 {
     position: absolute;
