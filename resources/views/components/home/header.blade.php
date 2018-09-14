@@ -35,7 +35,7 @@
                         Login
                     </a>
 
-                    <li class="nav-item d-flex align-items-center text-uppercase">
+                    <li class="nav-item d-flex align-items-center turisti-ka-agencija text-uppercase">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @else

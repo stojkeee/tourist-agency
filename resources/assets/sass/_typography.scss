@@ -4,16 +4,22 @@
 }
 a{
   font-size: 16px;
-  color: white;
+  color:$color-text !important;
   font-weight: lighter;
 }
 
 a:focus, a:hover {
   color: white;
   text-decoration: none;
-
   text-decoration-style: initial;
   text-decoration-color: initial;
+}
+a.btn {
+  color: white !important;
+}
+
+a.btn-bg {
+  color: white !important;
 }
 
 a:focus, a:hover {
@@ -23,16 +29,30 @@ a:focus, a:hover {
   text-decoration-color: initial;
 }
 a:-webkit-any-link {
-  color: -webkit-link;
   cursor: pointer;
   text-decoration: none;
   text-decoration-style: initial;
   text-decoration-color: initial;
 }
-
+strong{
+  color: $color-text;
+  font-family: "Josefin Sans", serif-sans, sans-serif;
+}
 
 h5.title{
+   color: $color-text;
+   font-family: "Josefin Sans", serif-sans, sans-serif;
+ }
+h4{
   color: $color-text;
+  font-family: "Josefin Sans", serif-sans, sans-serif;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: none;
+  color: white;
+  font-weight: 400;
   font-family: "Josefin Sans", serif-sans, sans-serif;
 }
 p{

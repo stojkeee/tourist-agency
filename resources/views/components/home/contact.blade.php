@@ -10,7 +10,9 @@
 
         <div class="row mt-50">
             <div class="col">
+
                 <form>
+
                     <div class="row">
                         <div class="col">
                             <label for="name"><p>Full Name</p></label>
@@ -23,11 +25,7 @@
                             <textarea class="form-control" id="message-contact" rows="4"></textarea>
                         </div>
                     </div>
-                    <div class="row justify-content-end">
-                        <div class="col-xs-12">
-                            <div class="mt-50 float-right"><a href="#" class="btn-bg-send white">send</a></div>
-                        </div>
-                    </div>
+                    <div class="mt-50 float-right"><a href="#" class="btn-bg-send white">send</a></div>
 
                 </form>
 

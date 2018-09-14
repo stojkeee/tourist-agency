@@ -23,7 +23,7 @@ class OfferController extends Controller {
 	}
 
 	public function home() {
-		$offers = Offer::latest()->paginate( 20 );
+		$offers = Offer::latest()->paginate( 5 );
 
 		return view( 'layouts.home', compact( 'offers' ) )
 			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
