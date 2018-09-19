@@ -64,9 +64,6 @@
                     </div>
             </div>
             <div class="modal-footer justify-content-center">
-                <a class="btn-bg-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
                 <a class="btn-bg-send" href="javascript:{}" onclick="document.getElementById('login').submit();">
                     {{ ('Login') }}
                 </a>

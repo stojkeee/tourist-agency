@@ -18,9 +18,9 @@
     </section>
     @include("components.home.offers")
     <section id="About" class="about">
-        <div class="container d-flex h-100">
+        <div class="container d-flex about">
             <div class="row align-items-center">
-                <div class="col-7 col-sm">
+                <div class="col-xs-12 col-sm-12 col-md-7">
                     <h4 class="title">About Us</h4>
                     <p class="mt-50">Now, if you are interested in being the best player, getting really good money and
                         knowing some tricks and advices of what to do in a live tournament games, here is the best place
@@ -28,8 +28,8 @@
                         learn them.</p>
                 </div>
 
-                <div class="col-5 col-sm h-100">
-                    <div class="row h-50">
+                <div class="col-xs-12 col-sm-12 col-md-5">
+                    <div class="row icon-height">
                         <div class="col about-icon">
                             <img class="about-icon-svg"
                                  src="storage/img/about/calendar.svg">
@@ -43,7 +43,7 @@
                                  src="storage/img/about/resort.svg">
                         </div>
                     </div>
-                    <div class="row h-50">
+                    <div class="row icon-height">
                         <div class="col about-icon">
                             <img class="about-icon-svg"
                                  src="storage/img/about/suitcase.svg">
