@@ -1,0 +1,100 @@
+.btn-bg {
+  background: linear-gradient(134.72deg, $color-blue-dark 0%, $color-blue-light 100%);
+  border-radius: 60px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 30px 10px 30px;
+  text-decoration: none;
+}
+
+.btn-bg:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.price-block{
+  margin-top: -20px;
+  padding: 0 10px;
+}
+
+.price-bg{
+  float: right;
+  background: linear-gradient(134.72deg, $color-blue-dark 0%, $color-blue-light 100%);
+  border-radius: 60px;
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 4px 30px;
+  text-decoration: none;
+}
+
+
+.white{
+  color:white;
+  text-decoration: none;
+}
+.white:hover{
+  color:white;
+  text-decoration: none;
+}
+
+.white:visited{
+  text-decoration: none;
+  color:white;
+}
+
+.card {
+  width: 21rem;
+  background: $color-card-bg;
+  border-radius: 20px;
+  border: none;
+}
+
+.card-block{
+  padding: 1.25rem !important;
+}
+.card:hover{
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-title{
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.card-text{
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.card-img-top{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  object-fit: cover;
+  max-height: 200px;
+  max-width: 100%;
+}
+.card-title-small{
+  float: left;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.card-date{
+  float: right;
+  background: linear-gradient(134.72deg, $color-blue-dark 0%, $color-blue-light 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}

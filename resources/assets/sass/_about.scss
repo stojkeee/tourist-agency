@@ -1,0 +1,18 @@
+.about{
+  min-height: 300px;
+  background: $color-card-bg;
+}
+.about-icon{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+.about-icon:hover{
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.icon-height{
+  min-height: 150px;
+}

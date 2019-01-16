@@ -1,0 +1,113 @@
+@mixin h-gradient($color1, $color2){
+  background: $color1;
+  background: -moz-linear-gradient(left,  $color1 0%, $color2 100%);
+  background: -webkit-linear-gradient(left,  $color1 0%,$color2 100%);
+  background: linear-gradient(to right,  $color1 0%,$color2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
+}
+
+
+@keyframes cloud1 {
+  0%   {top: -600px; left: 35%;}
+  100% {top:-100px; left: -1000px;}
+}
+@keyframes cloud2 {
+  0%   {top: -900px; left: 30%;}
+  100% {top:-400px; left: -1000px;}
+}
+@keyframes cloud3 {
+  0%   {top: -400px; left: 82%;}
+  100% {top:200px; left: -800px;}
+}
+@keyframes cloud4 {
+  0%   {top: 0px; left: 100%;}
+  100% {top:500px; left: -1000px;}
+}
+@keyframes plane {
+  0%		{transform: translateY(-10px) rotate(-25deg)  translate3d(0,0,0);}
+  100%	{transform: translateY(10px) rotate(-25deg)  translate3d(0,0,0);}
+}
+@keyframes plane-shadow {
+  0%		{transform: translateY(35px) scale(0.8) rotate(-25deg) translateZ(0); opacity: 0.0;}
+  100%	{transform: translateY(30px) scale(1) rotate(-25deg) translateZ(0); opacity: 0.1;}
+}
+
+
+
+
+.plane-animation{
+
+    height: 600px;
+    width: 100%;
+    @include h-gradient($color-blue-dark, $color-blue-light);
+    overflow: hidden;
+    position: relative;
+
+  .cloud1, .cloud2, .cloud3, .cloud4 {
+    position: absolute;
+    background:  url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMTI2IDU5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEuNDE0MjE7Ij48cmVjdCBpZD0iY2xvdWQyIiB4PSIwLjg1MSIgeT0iMCIgd2lkdGg9IjExMjUiIGhlaWdodD0iNTkzLjc2MSIgc3R5bGU9ImZpbGw6bm9uZTsiLz48cGF0aCBkPSJNMTU2Ljk1Myw5OS43ODZjLTAuMDk2LC0xLjE2NSAtMC4xNDUsLTIuMzQyIC0wLjE0NSwtMy41MjljMCwtMjUuMjMyIDIyLjAzNiwtNDUuNzE2IDQ5LjE3OSwtNDUuNzE2YzE0LjE5OSwwIDI3LjAwMSw1LjYwNiAzNS45ODIsMTQuNTY2YzcuMjA1LC0xNy40NDkgMjQuOTg0LC0yOS44MDUgNDUuNzUyLC0yOS44MDVjMjcuMTQyLDAgNDkuMTc4LDIxLjEwNiA0OS4xNzgsNDcuMTAxbDAsMC4yMjFjMS4xMzQsLTAuMTQ2IDIuMjksLTAuMjIxIDMuNDY0LC0wLjIyMWMxMS45NzUsMCAyMi4xNDEsNy44MDkgMjUuNjc4LDE4LjYwOWM0LjUyNSwtMTUuMzM0IDE5LjIzNSwtMjYuNTgxIDM2LjY2MSwtMjYuNTgxYzE1LjE0NCwwIDI4LjIzNiw4LjQ5NCAzNC4zNzYsMjAuNzgxYzMuNTIyLC0xLjk3NiA3LjYzNywtMy4xMTEgMTIuMDMyLC0zLjExMWM0LjI1OSwwIDguMjU1LDEuMDY2IDExLjcwMywyLjkyOWM1LjgwMSwtOC4wNzQgMTUuMTU2LC0xMy4zMTkgMjUuNzAxLC0xMy4zMTljMTAuMjkzLDAgMTkuNDUzLDQuOTk3IDI1LjI3OSwxMi43NDVjNC44MjEsLTQuNDcgMTEuMjczLC03LjIwNCAxOC4zNTksLTcuMjA0YzkuOTE3LDAgMTguNTk0LDUuMzU2IDIzLjI5MiwxMy4zMzFjNS45ODUsLTUuMjUgMTQuMTM3LC04LjQ4MiAyMy4xMTYsLTguNDgyYzQuNDYsMCA4LjcxNiwwLjc5NyAxMi42MDQsMi4yNDNjNC4yMzIsLTE2LjgwOCAxNi45NDUsLTMwLjU1MyAzMy42NTUsLTM3LjAyNWM3LjUwOCwtMzAuMDgyIDM2LjA2NiwtNTIuNDk0IDcwLjEwOCwtNTIuNDk0YzM5Ljc1OCwwIDcyLjAzNywzMC41NzIgNzIuMDM3LDY4LjIyN2MwLDEuNTMgLTAuMDU0LDMuMDQ3IC0wLjE1OSw0LjU1MmMxNy4wMzEsMC44NzEgMzEuMDA4LDEzLjI2MSAzNC4xMzcsMjkuNDQ4YzEyLjAzMiwyLjAxNiAyMS45NzQsMTEuMzYxIDI2LjE4OSwyMy45MDhjMTUuNjI4LC0xNi4wOSAzOC4wNSwtMjYuMTgxIDYyLjk0MiwtMjYuMTgxYzE3LjM2NywwIDMzLjUzMSw0LjkxMiA0Ny4wMjQsMTMuMzQ1YzMuODYxLC0zLjk2OCA5LjM2OCwtNi40NTEgMTUuNDc2LC02LjQ1MWM1LjAwOCwwIDkuNjEyLDEuNjY5IDEzLjIzNSw0LjQ1N2MxNC4yMjEsLTcuMjU0IDMwLjM0NSwtMTEuMzUxIDQ3LjQyNywtMTEuMzUxYzE0LjkzMSwwIDI5LjEzLDMuMTMgNDEuOTY2LDguNzYzYzQuODczLC01LjM4NiAxMS44NTksLTguNzYzIDE5LjYxNSwtOC43NjNjMTQuNzExLDAgMjYuNjU0LDEyLjE1IDI2LjY1NCwyNy4xMTRjMCw1LjU0OCAtMS42NDEsMTAuNzA4IC00LjQ1NiwxNS4wMDZjMTIuNjIzLDE3LjA0NSAyMC4wODEsMzguMDc3IDIwLjA4MSw2MC44MjJjMCwxMi43NjkgLTIuMzUxLDI0Ljk5OSAtNi42NDYsMzYuMjg2YzcuMjU3LDQuMjYxIDEyLjE2MSwxMi4zNDkgMTIuMTYxLDIxLjYxOGMwLDEzLjA1MiAtOS43MjQsMjMuNzY0IC0yMi4wNTIsMjQuNzQzYzMuNTQxLDguMzIgNS41MDgsMTcuNTE4IDUuNTA4LDI3LjE4N2MwLDM3LjI4NSAtMjkuMjQxLDY3LjU1NSAtNjUuMjU3LDY3LjU1NWMtMS42NDgsMCAtMy4yODEsLTAuMDYzIC00Ljg5OCwtMC4xODhjMC4xOTcsMC44MzYgMC4zMDIsMS43MDYgMC4zMDIsMi42MDFjMCw2LjI3OCAtNS4xNDgsMTEuMzc0IC0xMS40ODksMTEuMzc0Yy0wLjIxMiwwIC0wLjQyMywtMC4wMDYgLTAuNjMzLC0wLjAxN2MtMy45OTIsMTQuNzg2IC0xOC40NTksMjUuNzUyIC0zNS42NzIsMjUuNzUyYy0wLjMxLDAgLTAuNjIsLTAuMDAzIC0wLjkyOCwtMC4wMWMtMS44Myw2LjY0NyAtNi4yNDgsMTIuMzAyIC0xMi4xNjYsMTUuOTI5YzAuMTQ5LDEuNDEyIDAuMjI2LDIuODQ4IDAuMjI2LDQuMzAyYzAsMjEuMzA1IC0xNi40NzQsMzguNjAzIC0zNi43NjUsMzguNjAzYy04LjA5NSwwIC0xNS41ODMsLTIuNzU0IC0yMS42NiwtNy40MTZjMC4wMzksMS4zNTcgLTAuMDA3LDIuNzMgLTAuMTQyLDQuMTE0Yy0xLjg3MSwxOS4xOCAtMjAuMTQyLDMzLjExOSAtNDAuNzc2LDMxLjEwNmMtMTAuNzk0LC0xLjA1MyAtMjAuMTExLC02LjI2NCAtMjYuMjczLC0xMy43NDFjLTYuNzcyLDEyLjczIC0yMS4yMDMsMjAuODA0IC0zNi45OTEsMTkuMjY0Yy0yMC42MzQsLTIuMDEyIC0zNS44MjEsLTE5LjY5IC0zMy44OTMsLTM5LjQ1MmwwLjAxNywtMC4xNjhjLTAuODczLDAuMDI2IC0xLjc1OCwtMC4wMDIgLTIuNjUsLTAuMDg5Yy05LjEwMywtMC44ODggLTE2LjI1MiwtNy41NzggLTE4LjE0MSwtMTYuMDVjLTQuNTc3LDExLjMyIC0xNi41OTMsMTguNzggLTI5Ljg0MSwxNy40ODhjLTExLjUxMiwtMS4xMjMgLTIwLjgzNSwtOC41NTEgLTI0LjU5MSwtMTguMzQ3Yy0yLjgyNCwxLjI0MSAtNi4wMzcsMS43OTkgLTkuMzc4LDEuNDczYy0yLjc4NCwtMC4yNzIgLTUuMzYxLC0xLjEyOCAtNy42MDksLTIuNDI3bC0xLjY3OCwwYy0xLjYyNiwxLjcyMiAtMy40ODUsMy4yMDIgLTUuNTIsNC4zODhjLTAuODExLDIzLjY5NCAtMTkuMzg4LDQzLjEwOSAtNDMuMzU2LDQ2LjM4MmMtOC42MzksOS42MzEgLTIxLjM3OSwxNS43MjUgLTM1LjU3OSwxNS43MjVjLTEyLjgzNSwwIC0yNC40NzgsLTQuOTc5IC0zMi45NzcsLTEzLjA0OWMtOC40MTgsOC4wOTMgLTE5LjcxOCwxMy4wNDkgLTMyLjEzMywxMy4wNDljLTEyLjMxOSwwIC0yMy41NCwtNC44NzkgLTMxLjkzNywtMTIuODYxYy02LjUsMi45MTggLTEzLjc1Miw0LjU0OSAtMjEuMzk4LDQuNTQ5Yy02LjE0MywwIC0xMi4wMzIsLTEuMDUzIC0xNy40OCwtMi45OGMtMi41OCwzNi40NTIgLTM1LjM0OSw2NS4zMTkgLTc1LjMzNiw2NS4zMTljLTI5Ljc4NywwIC01NS41NjgsLTE2LjAxOCAtNjcuODUsLTM5LjI1N2MtMi41MDIsMC4zMDkgLTUuMDU2LDAuNDY4IC03LjY1LDAuNDY4Yy0yMi40NjcsMCAtNDEuOTA1LC0xMS45NTYgLTUxLjExNSwtMjkuMjg3Yy02LjIzNCwzLjY2IC0xMy4zNTgsNS43MzcgLTIwLjkyMiw1LjczN2MtMjMuNjMxLDAgLTQyLjk2OCwtMjAuMjY4IC00NC4yNjEsLTQ1Ljc2NGMtMy44MiwtMC4xMzUgLTcuNTQxLC0wLjU1NiAtMTEuMTI3LC0xLjIzNmMtNS40ODQsMS4zMyAtMTEuMTkyLDIuMDMyIC0xNy4wNTQsMi4wMzJjLTQyLjEwNCwwIC03Ni4yODcsLTM2LjI0MiAtNzYuMjg3LC04MC44ODJjMCwtMi45NzkgMC4xNTIsLTUuOTIxIDAuNDQ5LC04LjgxOGMtMTcuNTA0LC02LjE1OCAtMzAuMTM0LC0yMy41NTUgLTMwLjEzNCwtNDQuMDMxYzAsLTUuNDU4IDAuODk3LC0xMC42OTYgMi41NDUsLTE1LjU2MmMtMTMuMzc4LC03Ljg0MiAtMjIuNjY1LC0yMS4zMDQgLTI0LjEyOCwtMzYuODcxYy0xMC42MzYsLTIuMDQ2IC0xOC41ODUsLTEwLjEwMyAtMTguNTg1LC0xOS43MThjMCwtNS4xOTEgMi4zMTcsLTkuOTI4IDYuMTIzLC0xMy41MWMtMTQuODUxLC05LjY3OCAtMjQuNzc5LC0yNy4xODMgLTI0Ljc3OSwtNDcuMTUyYzAsLTMwLjQzNiAyMy4wNjQsLTU1LjE0NyA1MS40NzEsLTU1LjE0N2M2LjY2OCwwIDEzLjA0MiwxLjM2MiAxOC44OTIsMy44NGMxNy44MzgsLTI5LjMzOSA0OC4zNDQsLTUwLjE0MiA4My45MDEsLTU0Ljc4OVoiIHN0eWxlPSJmaWxsOiNmZmY7Ii8+PC9zdmc+') no-repeat;
+    width: 1000px;
+    height: 800px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .cloud1{
+    opacity: 0.2;
+    transform: rotate(-25deg) translateZ(0);
+    animation-name: cloud1;
+    animation-duration: 25s;
+
+  }
+  .cloud2{
+    top: -2000px;
+    opacity: 0.4;
+    transform: rotate(155deg) translate3d(0,0,0);
+    animation-name: cloud2;
+    animation-duration: 35s;
+  }
+  .cloud3{
+    top: 0px;
+    opacity: 0.4;
+    transform: rotate(155deg) translate3d(0,0,0);
+    animation-name: cloud3;
+    animation-duration: 38s;
+  }
+  .cloud4{
+    top: 0px;
+    opacity: 0.2;
+    transform: rotate(-25deg) translate3d(0,0,0);
+    animation-name: cloud4;
+    animation-duration: 24s;
+  }
+  .plane{
+    width: 800px;
+    height: 100px;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCA5ODggODYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxLjQxNDIxOyI+PGc+PHBhdGggaWQ9ImZsaWdodHMiIGQ9Ik05ODcuMDU2LDQyLjgwM2MwLC0zLjYwNCAtMy4xNTQsLTYuNzU4IC02Ljc1OCwtNi43NThsLTI0Ljc4MSwwbC0yMi41MjgsLTM2LjA0NWwtOS4wMTIsMGwxMS4yNjUsMzYuMDQ1bC0yNC43ODEsMGwtNi43NTksLTkuMDExbC02Ljc1OCwwbDQuNTA1LDE1Ljc2OWwtNC41MDUsMTUuNzdsNi43NTgsMGw2Ljc1OSwtOS4wMTFsMjQuNzgxLDBsLTExLjI2NSwzNi4wNDVsOS4wMTIsMGwyMi41MjgsLTM2LjA0NWwyNC43ODEsMGMzLjYwNCwwIDYuNzU4LC0zLjE1NCA2Ljc1OCwtNi43NTlaIiBzdHlsZT0iZmlsbDojZmZmO2ZpbGwtcnVsZTpub256ZXJvOyIvPjxwYXRoIGQ9Ik04ODIuNSw0Mi44MDNsLTg4Mi41LDE1bDAsLTMwbDg4Mi41LDE1WiIgc3R5bGU9ImZpbGw6I2ZmZjtmaWxsLW9wYWNpdHk6MC4yMDA3ODQ7Ii8+PC9nPjwvc3ZnPg==') no-repeat;
+    position: absolute;
+    top: 420px;
+    left: calc(50% - 700px);
+
+    animation-name: plane;
+    animation-duration: 2s;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }.plane-shadow{
+     width: 60px;
+     height: 60px;
+     background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCA5MiA4NiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEuNDE0MjE7Ij48cGF0aCBpZD0iZmxpZ2h0cyIgZD0iTTkxLjA1Niw0Mi44MDNjMCwtMy42MDQgLTMuMTU0LC02Ljc1OCAtNi43NTgsLTYuNzU4bC0yNC43ODEsMGwtMjIuNTI4LC0zNi4wNDVsLTkuMDEyLDBsMTEuMjY1LDM2LjA0NWwtMjQuNzgxLDBsLTYuNzU5LC05LjAxMWwtNi43NTgsMGw0LjUwNSwxNS43NjlsLTQuNTA1LDE1Ljc3bDYuNzU4LDBsNi43NTksLTkuMDExbDI0Ljc4MSwwbC0xMS4yNjUsMzYuMDQ1bDkuMDEyLDBsMjIuNTI4LC0zNi4wNDVsMjQuNzgxLDBjMy42MDQsMCA2Ljc1OCwtMy4xNTQgNi43NTgsLTYuNzU5WiIgc3R5bGU9ImZpbGw6IzBkMGQwZDtmaWxsLXJ1bGU6bm9uemVybzsiLz48L3N2Zz4=') no-repeat;
+     position: absolute;
+     top: calc(50% - 25px);
+     left: calc(50% - 5px);
+     opacity: 0.2;
+
+     animation-name: plane-shadow;
+     animation-duration: 2s;
+     animation-delay: 0;
+     animation-fill-mode: forwards;
+     animation-direction: alternate;
+     animation-timing-function: ease-in-out;
+     animation-iteration-count: infinite;
+   }
+}
