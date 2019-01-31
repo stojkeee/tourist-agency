@@ -16,7 +16,7 @@ class CreateOfferUserTable extends Migration
 	    Schema::create('orders', function (Blueprint $table) {
 		    $table->increments('id');
 		    $table->integer('user_id')->unsigned();
-		    $table->integer('offer_id')->unsigned();
+		    $table->integer('offer_id')->unsigned( );
 		    $table->string('phone_number');
 		    $table->string('persons');
 		    $table->timestamps();
