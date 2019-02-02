@@ -19,14 +19,14 @@ class OfferController extends Controller {
 		$offers = Offer::latest()->paginate( 10 );
 
 		return view( 'components.admin.offers.index', compact( 'offers' ) )
-			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
+			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 )->where('deleted','1');
 	}
 
 	public function home() {
 		$offers = Offer::latest()->paginate( 20 );
 
 		return view( 'layouts.home', compact( 'offers' ) )
-			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
+			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 )->where('deleted','1');
 	}
 
 	public function store( Request $request ) {
@@ -48,6 +48,7 @@ class OfferController extends Controller {
 		$offer->mime              = $cover->getClientMimeType();
 		$offer->original_filename = $cover->getClientOriginalName();
 		$offer->filename          = $cover->getFilename() . '.' . $extension;
+		$offer->deleted           = '0';
 		$offer->save();
 
 		return redirect()->route( 'offers.index' )
