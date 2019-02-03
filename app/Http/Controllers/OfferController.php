@@ -16,17 +16,17 @@ class OfferController extends Controller {
 
 
 	public function index() {
-		$offers = Offer::latest()->paginate( 10 );
+		$offers = Offer::where( 'deleted', '0' )->latest()->paginate( 20 );
 
 		return view( 'components.admin.offers.index', compact( 'offers' ) )
-			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 )->where('deleted','1');
+			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
 	}
 
 	public function home() {
-		$offers = Offer::latest()->paginate( 20 );
+		$offers = Offer::latest()->paginate( 20 )->where( 'deleted', '0' );
 
 		return view( 'layouts.home', compact( 'offers' ) )
-			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 )->where('deleted','1');
+			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
 	}
 
 	public function store( Request $request ) {
@@ -83,6 +83,14 @@ class OfferController extends Controller {
 
 		return redirect()->route( 'offers.index' )
 		                 ->with( 'success', 'Offer deleted successfully' );
+	}
+
+	public function destroy_offer( $id ) {
+		Offer::find( $id )->update( 'deleted', '1' );
+
+		return redirect()->route( 'offers.index' )
+		                 ->with( 'success', 'Offer deleted successfully' );
+
 	}
 
 
