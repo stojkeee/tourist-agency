@@ -36,14 +36,19 @@
                         <td class="align-middle"><p>{{ $offer->price}} KM</p></td>
                         <td class="align-middle"><p>{{ $offer->description}}</p></td>
                         <td class="align-middle"><p>{{ $offer->date}}</p></td>
-                        <td class="align-middle"><div class="table-img"><img src="{{url('uploads/'.$offer->filename)}}" alt="{{$offer->filename}}"
-                                                          style="height: 100%;width: 100%;object-fit: cover;"></div>
+                        <td class="align-middle">
+                            <div class="table-img"><img src="{{url('uploads/'.$offer->filename)}}"
+                                                        alt="{{$offer->filename}}"
+                                                        style="height: 100%;width: 100%;object-fit: cover;"></div>
                         </td>
                         <td class="align-middle">
+
                             <a class="btn btn-success btn-sm" href="{{ route('offers.edit',$offer->id) }}">Edit</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['offers.destroy', $offer->id],'style'=>'display:inline']) !!}
+
+                            {!! Form::open(['method' => 'POST','route' => ['offers.destroy_offer', $offer->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
+
                         </td>
                     </tr>
                 @endforeach

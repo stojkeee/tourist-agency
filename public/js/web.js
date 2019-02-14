@@ -4,3 +4,4 @@ $( ".alert-button" ).click(function() {
 if ( typeof login_haserrors !== 'undefined'){
     $('#modalLogin').modal('show');
 }
+

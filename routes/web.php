@@ -2,11 +2,13 @@
 
 Route::get('/dashboard', 'OfferController@index');
 
-Route::get('/', 'OfferController@home');
+Route::get('/', 'OfferController@home')->name('offers.home');
 
 Route::get('/users', 'UserController@index');
 
 Route::get('/all-orders', 'OfferController@all_index_order')->name('offers.all_index_order');
+
+Route::post('/offers/{id}', 'OfferController@destroy_offer')->name('offers.destroy_offer');
 
 Route::post('/offers/{offer}/orders', 'OfferController@store_order')->name('offers.store_order');
 

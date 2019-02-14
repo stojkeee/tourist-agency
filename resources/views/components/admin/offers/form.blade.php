@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <p>Date:</p>
-            <input class="form-control" type="date" placeholder="Date" name="date">
+            {{ Form::text('date', null, array('class' => 'datepicker','id' => 'datepicker')) }}
         </div>
         <div class="form-group">
             <p>Price:</p>

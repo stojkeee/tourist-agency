@@ -22,10 +22,24 @@ class OfferController extends Controller {
 			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
 	}
 
-	public function home() {
-		$offers = Offer::latest()->paginate( 20 )->where( 'deleted', '0' );
+	public function home( Request $request ) {
 
-		return view( 'layouts.home', compact( 'offers' ) )
+		if (($request["type"] != "any")&&($request["country"] != "any")) {
+			$offers = Offer::where( 'type', $request["type"] )->where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+		}
+		elseif (($request["type"] == "any")&&($request["country"] != "any")) {
+			$offers = Offer::where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+		}
+		elseif (($request["type"] != "any")&&($request["country"] == "any")) {
+			$offers = Offer::where( 'type', $request["type"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+		}
+		else{
+			$offers = Offer::latest()->paginate( 20 )->where( 'deleted', '0' );
+		}
+
+		$type = $request['type'];
+		$country = $request['country'];
+		return view( 'layouts.home', compact( 'offers', 'type', 'country' ) )
 			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
 	}
 
@@ -49,6 +63,8 @@ class OfferController extends Controller {
 		$offer->original_filename = $cover->getClientOriginalName();
 		$offer->filename          = $cover->getFilename() . '.' . $extension;
 		$offer->deleted           = '0';
+		$offer->type              = 'planina';
+		$offer->country           = 'hrvatska';
 		$offer->save();
 
 		return redirect()->route( 'offers.index' )
@@ -72,25 +88,46 @@ class OfferController extends Controller {
 			'description' => 'required',
 			'date'        => 'required',
 		] );
+
+		if ($request->hasFile('image'))
+		{
+			$cover     = $request->file( 'offercover' );
+			$extension = $cover->getClientOriginalExtension();
+			Storage::disk( 'public' )->put( $cover->getFilename() . '.' . $extension, File::get( $cover ) );
+			$offer                    = new Offer();
+			$offer->title             = $request->title;
+			$offer->price             = $request->price;
+			$offer->date              = $request->date;
+			$offer->description       = $request->description;
+			$offer->mime              = $cover->getClientMimeType();
+			$offer->original_filename = $cover->getClientOriginalName();
+			$offer->filename          = $cover->getFilename() . '.' . $extension;
+			$offer->deleted           = '0';
+			$offer->type              = 'planina';
+			$offer->country           = 'hrvatska';
+			$offer->save();
+		}
+
 		Offer::find( $id )->update( $request->all() );
 
 		return redirect()->route( 'offers.index' )
 		                 ->with( 'success', 'Offer updated successfully' );
 	}
 
-	public function destroy( $id ) {
-		Offer::find( $id )->delete();
+	/*
+		public function destroy( $id ) {
+			Offer::find( $id )->delete();
 
-		return redirect()->route( 'offers.index' )
-		                 ->with( 'success', 'Offer deleted successfully' );
-	}
+			return redirect()->route( 'offers.index' )
+							 ->with( 'success', 'Offer deleted successfully' );
+		}*/
 
 	public function destroy_offer( $id ) {
-		Offer::find( $id )->update( 'deleted', '1' );
+
+		Offer::find( $id )->where( 'deleted', '0' )->update( array( 'deleted' => 1 ) );
 
 		return redirect()->route( 'offers.index' )
 		                 ->with( 'success', 'Offer deleted successfully' );
-
 	}
 
 
