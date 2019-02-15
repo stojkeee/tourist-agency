@@ -24,21 +24,21 @@ class OfferController extends Controller {
 
 	public function home( Request $request ) {
 
-		if (($request["type"] != "any")&&($request["country"] != "any")) {
-			$offers = Offer::where( 'type', $request["type"] )->where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
-		}
-		elseif (($request["type"] == "any")&&($request["country"] != "any")) {
-			$offers = Offer::where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
-		}
-		elseif (($request["type"] != "any")&&($request["country"] == "any")) {
-			$offers = Offer::where( 'type', $request["type"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
-		}
-		else{
+		if ($request->has( [ 'type', 'country' ] )) {
+			if (( $request["type"] != "any" ) && ( $request["country"] != "any" )) {
+				$offers = Offer::where( 'type', $request["type"] )->where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+			} elseif (( $request["type"] == "any" ) && ( $request["country"] != "any" )) {
+				$offers = Offer::where( 'country', $request["country"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+			} elseif (( $request["type"] != "any" ) && ( $request["country"] == "any" )) {
+				$offers = Offer::where( 'type', $request["type"] )->where( 'deleted', '0' )->latest()->paginate( 20 );
+			}
+		} else {
 			$offers = Offer::latest()->paginate( 20 )->where( 'deleted', '0' );
 		}
 
-		$type = $request['type'];
+		$type    = $request['type'];
 		$country = $request['country'];
+
 		return view( 'layouts.home', compact( 'offers', 'type', 'country' ) )
 			->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
 	}
@@ -89,8 +89,7 @@ class OfferController extends Controller {
 			'date'        => 'required',
 		] );
 
-		if ($request->hasFile('image'))
-		{
+		if ($request->hasFile( 'image' )) {
 			$cover     = $request->file( 'offercover' );
 			$extension = $cover->getClientOriginalExtension();
 			Storage::disk( 'public' )->put( $cover->getFilename() . '.' . $extension, File::get( $cover ) );

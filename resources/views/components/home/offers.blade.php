@@ -5,9 +5,10 @@
                 <h4 class="title">We are offering</h4>
             </div>
             <div class="col">
-                <input id="cardsearchinput" class="form-control" type="text" placeholder="Search.." style="display: inline-block; !important;">
+                <input id="cardsearchinput" class="form-control" type="text" placeholder="Search.."
+                       style="display: inline-block; !important;">
             </div>
-              <div class="col-6">
+            <div class="col-6">
                 {{Form::open(array('route' => 'offers.home','method' => 'get'))}}
                 {{ Form::select('type', array('any' => 'Tipovi', 'planina' => 'Planina', 'more' => 'More', 'grad' => 'Grad'), null, array('class'=>'form-control col-sm-4','style'=>'margin-right:20px; display:inline-block;' )) }}
                 {{ Form::select('country', array('any' => 'Drzave', 'hrvatska' => 'Hrvatska', 'bih' => 'BiH', 'srbija' => 'Srbija'), null, array('class'=>'form-control col-sm-4','style'=>'margin-right:20px; display:inline-block;' )) }}
@@ -38,8 +39,6 @@
                 @include("components.home.card")
             @endforeach
 
-            {{$type}}
-            {{$country}}
         </div>
     </div>
     <section>
