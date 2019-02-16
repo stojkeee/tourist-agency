@@ -49,6 +49,8 @@ class OfferController extends Controller {
 			'price'       => 'required',
 			'date'        => 'required',
 			'description' => 'required',
+			'type' => 'required',
+			'country' => 'required',
 		] );
 
 		$cover     = $request->file( 'offercover' );
@@ -63,8 +65,8 @@ class OfferController extends Controller {
 		$offer->original_filename = $cover->getClientOriginalName();
 		$offer->filename          = $cover->getFilename() . '.' . $extension;
 		$offer->deleted           = '0';
-		$offer->type              = 'planina';
-		$offer->country           = 'hrvatska';
+		$offer->type              = $request->type;
+		$offer->country           = $request->country;
 		$offer->save();
 
 		return redirect()->route( 'offers.index' )
@@ -89,23 +91,6 @@ class OfferController extends Controller {
 			'date'        => 'required',
 		] );
 
-		if ($request->hasFile( 'image' )) {
-			$cover     = $request->file( 'offercover' );
-			$extension = $cover->getClientOriginalExtension();
-			Storage::disk( 'public' )->put( $cover->getFilename() . '.' . $extension, File::get( $cover ) );
-			$offer                    = new Offer();
-			$offer->title             = $request->title;
-			$offer->price             = $request->price;
-			$offer->date              = $request->date;
-			$offer->description       = $request->description;
-			$offer->mime              = $cover->getClientMimeType();
-			$offer->original_filename = $cover->getClientOriginalName();
-			$offer->filename          = $cover->getFilename() . '.' . $extension;
-			$offer->deleted           = '0';
-			$offer->type              = 'planina';
-			$offer->country           = 'hrvatska';
-			$offer->save();
-		}
 
 		Offer::find( $id )->update( $request->all() );
 
